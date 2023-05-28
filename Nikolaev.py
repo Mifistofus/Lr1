@@ -79,6 +79,12 @@ class Car:
             self.vel = min(self.vel + self.acceleration / 2, 0)
         self.vrum()
 
+    def collide(self, mask, x=0, y=0):
+        car_mask = pygame.mask.from_surface(self.img)
+        offset = (int(self.x - x), int(self.y - y))
+        poi = mask.overlap(car_mask, offset)
+        return poi
+
 def pictures(imageges, win, player_car):
     for img, pos in imageges:
         win.blit(img, pos)
@@ -95,7 +101,6 @@ while run:
     clock.tick(FPS)
     pictures(img_disk, WIN, player_car)
 
-    #WIN.blit(RED_CAR, (150, 300))
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -114,9 +119,10 @@ while run:
     if keys[pygame.K_s]:
         moved = True
         player_car.move_back()
-
     if not moved:
         player_car.reduce_speed()
+    if player_car.collide(TRACK_BORDER_MASK) != None:
+        print("collide")
 
     if player_car.collide(TRACK_BORDER_MASK) != None:
         print("Car.START_POS[0]")
