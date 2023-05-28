@@ -3,6 +3,9 @@ import pygame
 import math
 import time
 from static import flatten , blit_rorate_center
+import threading
+pygame.init()
+counter = 1500
 
 GRASS = flatten(pygame.image.load("asets/grass.jpg"), 2.5)
 TRACK = flatten(pygame.image.load("asets/track.png"), 0.9)
@@ -98,6 +101,23 @@ img_disk = [(GRASS, (0, 0)), (TRACK, (0, 0)), (FINISH, (138, 240))]
 player_car = Car( 4 , 6)
 
 while run:
+    for e in pygame.event.get():
+
+        if e.type == pygame.QUIT:
+            run = False
+
+        #
+        # if starter == 0:
+        #     timer_thread.start()
+        #     starter = starter + 1
+        #     print(counter)
+        #
+        # clock.tick(60)
+    counter -= 1
+    print(counter)
+    if not counter:
+        counter = 1500
+        player_car.reset()
     clock.tick(FPS)
     pictures(img_disk, WIN, player_car)
 
@@ -110,9 +130,9 @@ while run:
     keys = pygame.key.get_pressed()
     moved = False
     if keys[pygame.K_a]:
-        player_car.rotate(left= True)
+        player_car.rotate(left=True)
     if keys[pygame.K_d]:
-        player_car.rotate(right= True)
+        player_car.rotate(right=True)
     if keys[pygame.K_w]:
         moved = True
         player_car.move()
@@ -121,12 +141,10 @@ while run:
         player_car.move_back()
     if not moved:
         player_car.reduce_speed()
-    if player_car.collide(TRACK_BORDER_MASK) != None:
-        print("collide")
 
-    if player_car.collide(TRACK_BORDER_MASK) != None:
-        print("Car.START_POS[0]")
+    if player_car.collide(TRACK_BORDER_MASK) is not None:
         player_car.reset()
+        counter = 1500
 
 
 pygame.quit()
