@@ -8,6 +8,7 @@ GRASS = flatten(pygame.image.load("asets/grass.jpg"), 2.5)
 TRACK = flatten(pygame.image.load("asets/track.png"), 0.9)
 
 TRACK_BORDER = flatten(pygame.image.load("asets/track-border.png"), 0.9)
+TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER)
 FINISH = flatten(pygame.image.load("asets/finish.png"), 0.82)
 
 RED_CAR = flatten(pygame.image.load("asets/red-car.png"), 0.4)
@@ -49,7 +50,7 @@ class Car:
         self.vrum()
 
     def move_back(self):
-        self.vel = max(self.vel - self.acceleration, -10)
+        self.vel = max(self.vel - self.acceleration, -2)
         self.vrum()
 
     def vrum(self):
@@ -59,6 +60,17 @@ class Car:
 
         self.x -= horizontal
         self.y -= vertical
+
+    def collide(self, mask, x=0, y=0):
+        car_mask = pygame.mask.from_surface(self.img)
+        offset = (int(self.x - x), int(self.y - y))
+        poi = mask.overlap(car_mask, offset)
+        return poi
+
+    def reset(self):
+        self.x, self.y = self.START_POS
+        self.angle = 0
+        self.vel = 0
 
     def reduce_speed(self):
         if self.vel >= 0:
@@ -105,5 +117,10 @@ while run:
 
     if not moved:
         player_car.reduce_speed()
+
+    if player_car.collide(TRACK_BORDER_MASK) != None:
+        print("Car.START_POS[0]")
+        player_car.reset()
+
 
 pygame.quit()
