@@ -99,6 +99,7 @@ run = True
 clock = pygame.time.Clock()
 img_disk = [(GRASS, (0, 0)), (TRACK, (0, 0)), (FINISH, (138, 240))]
 player_car = Car( 4 , 6)
+counter = 3000
 
 while run:
     for e in pygame.event.get():
@@ -106,17 +107,10 @@ while run:
         if e.type == pygame.QUIT:
             run = False
 
-        #
-        # if starter == 0:
-        #     timer_thread.start()
-        #     starter = starter + 1
-        #     print(counter)
-        #
-        # clock.tick(60)
     counter -= 1
     print(counter)
     if not counter:
-        counter = 1500
+        counter = 3000
         player_car.reset()
     clock.tick(FPS)
     pictures(img_disk, WIN, player_car)
@@ -144,7 +138,7 @@ while run:
 
     if player_car.collide(TRACK_BORDER_MASK) is not None:
         player_car.reset()
-        counter = 1500
+        counter = 3000
 
 
 pygame.quit()
