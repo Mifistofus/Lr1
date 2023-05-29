@@ -1,5 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# This is a basic workflow to help you get started with Actions
 
 name: Python application
 
@@ -16,6 +15,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -36,13 +36,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-0 comments on commit 84371bd
-@Mifistofus
- 
-Add heading textAdd bold text, <Ctrl+b>Add italic text, <Ctrl+i>
-Add a quote, <Ctrl+Shift+.>Add code, <Ctrl+e>Add a link, <Ctrl+k>
-Add a bulleted list, <Ctrl+Shift+8>Add a numbered list, <Ctrl+Shift+7>Add a task list, <Ctrl+Shift+l>
-Directly mention a user or team
-Reference an issue, pull request, or discussion
-Add saved reply
-Leave a comment
