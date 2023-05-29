@@ -1,8 +1,6 @@
 import pytest
 from Nikolaev import TRACK, TRACK_BORDER, FINISH_POSITION, RED_CAR, GameBar, Car
 
-
-
 def test_overlay():
     assert TRACK.get_height() == TRACK_BORDER.get_height()
 
