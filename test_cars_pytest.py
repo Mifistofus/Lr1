@@ -13,12 +13,6 @@ def test_car_width():
 def test_car_height():
     assert RED_CAR.get_height() < (TRACK.get_height() / 5)
 
-#def test_car_min_height():
-#   assert RED_CAR.get_height() >= 15
-
-#def test_car_min_width():
-#    assert RED_CAR.get_width() >= 4
-
 def test_game_time():
     time = GameBar.TIME
     assert min(time) >= 950
