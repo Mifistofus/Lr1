@@ -19,6 +19,9 @@ WIN_IMG = flatten(pygame.image.load("asets/win.png"), 0.85)
 
 RED_CAR = flatten(pygame.image.load("asets/red-car.png"), 0.15)
 
+print(RED_CAR)
+print(TRACK.get_height())
+
 HEIGHT = TRACK.get_height()
 WIDTH = TRACK.get_width()   # Получение ширины и высоты из параметров трека т.к. они являются оптимальными для проекта и позволяют избегать искажений
 
@@ -79,8 +82,8 @@ class GameBar:
 class Car:
 
     IMG = RED_CAR # Поскольку задумка изменена и машина будет только одна я добавил передачу прямо в классе
-    START_POS = (160, 180) # так, же можно передать сразу, являются индивидуальными для класса
-    # START_POS  = (160, 300) # для тестов
+    #START_POS = (160, 180) # так, же можно передать сразу, являются индивидуальными для класса
+    START_POS = (160, 300) # для тестов
 
 
     def __init__(self, max_speed, rotation_speed):
