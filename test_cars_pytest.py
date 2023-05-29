@@ -49,5 +49,5 @@ def func():
 ])
 
 def test_car_properties(property_car, test, result, func):
-    assert func(property_car, test) == resultwwwww
+    assert func(property_car, test) == result
 

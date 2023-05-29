@@ -19,9 +19,6 @@ WIN_IMG = flatten(pygame.image.load("asets/win.png"), 0.85)
 
 RED_CAR = flatten(pygame.image.load("asets/red-car.png"), 0.15)
 
-print(RED_CAR)
-print(TRACK.get_height())
-
 HEIGHT = TRACK.get_height()
 WIDTH = TRACK.get_width()   # Получение ширины и высоты из параметров трека т.к. они являются оптимальными для проекта и позволяют избегать искажений
 
