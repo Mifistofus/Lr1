@@ -82,6 +82,7 @@ class Car:
     START_POS = (160, 180) # так, же можно передать сразу, являются индивидуальными для класса
     # START_POS  = (160, 300) # для тестов
 
+
     def __init__(self, max_speed, rotation_speed):
         self.img = self.IMG
         self.max_speed = max_speed
